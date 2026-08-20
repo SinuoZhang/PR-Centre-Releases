@@ -1,22 +1,46 @@
-# PR Centre Releases
+# PR Centre
 
-This is the official binary release repository for **PR Centre**.
+PR Centre is a desktop workspace for academic research. It keeps literature, PDFs, notes, annotations, and working files together around each research project.
 
-PR Centre is currently closed-source and under internal testing and development. The application source code is maintained in a separate private repository and is not hosted here.
+## What It Does
 
-Downloadable builds will be published through [GitHub Releases](../../releases) rather than committed to this repository. During the unsigned testing stage, each real release will use a semantic version tag such as `v0.1.0` and provide its DMG as a release asset.
+- Organizes research around projects.
+- Maintains a reusable Library/Database of BibTeX entries and linked resources.
+- Opens PDFs in an integrated Reader with search and reading controls.
+- Sends quotations, screenshots, and source references from the Reader into project notes.
+- Supports structured notes with text, citations, images, drawings, tags, and captions.
+- Keeps rich-text and plain-text working files inside each project.
+- Provides a Project Agent that can work with bounded project context and approved tools.
+- Formats and copies references using preset or custom citation layouts.
 
-The intended manual release flow is:
+## Main Areas
 
-```text
-Build PR Centre
--> generate DMG
--> create a version tag
--> create a GitHub Release
--> attach the DMG
--> write release notes
-```
+### Projects
 
-In the future, this repository may also serve as PR Centre's update source. Signed releases may include DMG, macOS ZIP, blockmap, and `latest-mac.yml` files as GitHub Release Assets, never as files in the normal Git repository tree.
+Projects are the main research workspace. Each project brings together selected literature, reading material, notes, annotations, and files for one topic.
 
-No release is published until a real distributable build is available.
+### Library/Database
+
+The Library/Database stores bibliography entries and linked resources such as PDFs, folders, and URLs. The same literature entry can be reused across projects.
+
+### Reader
+
+The Reader provides PDF navigation, search, annotations, screenshots, and links back to the exact reading source.
+
+### Notes and Files
+
+Notes capture structured research material. Project Files support longer writing, rich-text documents, plain-text formats, and PDF export.
+
+### Project Agent
+
+The Project Agent can answer questions using approved project context and can use bounded File and terminal tools when explicitly authorized.
+
+## Releases
+
+Official builds are available from [GitHub Releases](../../releases). Version and asset metadata are recorded in [`versions.yml`](versions.yml).
+
+The current release is provided for macOS on Apple Silicon (`arm64`) as an AES-256 encrypted DMG. The password is distributed separately to invited testers.
+
+Current builds are unsigned and not notarized. macOS may display a security warning when opening the application.
+
+PR Centre is currently closed-source and shared with selected testers by invitation. The application source and private research data are not stored in this repository.
