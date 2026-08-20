@@ -15,7 +15,8 @@ releases:
       - Downloads the DMG to the user's Downloads folder with progress feedback.
       - Verifies the downloaded DMG with SHA-256 before offering Show in Finder or Open DMG.
       - Keeps installation manual: users open the encrypted DMG and replace PR Centre.app themselves.
-      - Builds remain unsigned, not notarized, and password distribution remains outside PR Centre.
+      - The app bundle is ad-hoc signed for internal testing to avoid macOS treating the downloaded app as damaged.
+      - Builds remain Developer ID unsigned, not notarized, and password distribution remains outside PR Centre.
     assets:
       - name: PR-Centre-0.2.1-arm64-encrypted.dmg
         platform: macos
@@ -23,6 +24,7 @@ releases:
         format: dmg
         encrypted: true
         encryption: AES-256
+        adHocSigned: true
         signed: false
         notarized: false
         sizeBytes: 196779008
