@@ -25,29 +25,6 @@ releases:
         encryption: AES-256
         signed: false
         notarized: false
-        sizeBytes: 197878784
-        sha256: a46e2e054aabcee13604bda58469a6a4d69ca7d0246fed9ee81730a985d0030f
+        sizeBytes: 196779008
+        sha256: c1ef46366b5b3e18d98509260010e359cabc2143bfa332bffbc7205805044f2f
         downloadUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/download/v0.2.1/PR-Centre-0.2.1-arm64-encrypted.dmg
-  - version: "0.2.0"
-    tag: v0.2.0
-    name: PR Centre v0.2.0
-    channel: stable
-    publishedAt: "2026-08-19T22:02:16Z"
-    releaseUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/tag/v0.2.0
-    releaseNotes: |-
-      - Internal testing release for macOS Apple Silicon.
-      - Distributed as an AES-256 encrypted DMG with the password shared separately.
-      - Included citation/reference formatting improvements for PR Centre's literature workflow.
-      - Builds were unsigned and not notarized.
-    assets:
-      - name: PR-Centre-0.2.0-arm64-encrypted.dmg
-        platform: macos
-        architecture: arm64
-        format: dmg
-        encrypted: true
-        encryption: AES-256
-        signed: false
-        notarized: false
-        sizeBytes: 197501440
-        sha256: 3f0f005ab6c2147a53879d3369d7b61bd0492825a3126c22e9922bd73a03cfcf
-        downloadUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/download/v0.2.0/PR-Centre-0.2.0-arm64-encrypted.dmg
