@@ -43,7 +43,7 @@ Official builds are available from [GitHub Releases](../../releases). Version an
 
 | Version | Platform | Architecture | Asset | Status |
 | --- | --- | --- | --- | --- |
-| `0.2.1` | macOS | `arm64` | encrypted DMG | internal testing, ad-hoc signed, not notarized |
+| `0.2.1` | macOS | `arm64` | [encrypted DMG](../../releases/tag/v0.2.1) | internal testing |
 
 The current release is provided for macOS on Apple Silicon (`arm64`) as an AES-256 encrypted DMG. The password is distributed separately to invited testers.
 
@@ -53,62 +53,29 @@ Browser downloads can mark unsigned internal-testing apps with macOS quarantine 
 
 ### macOS Apple Silicon
 
-Copy and run this block in Terminal:
+Copy and run this block in Terminal. It reads the latest version from `versions.yml`, downloads that release, and opens the DMG:
 
 ```bash
-RELEASE_MANIFEST="https://raw.githubusercontent.com/SinuoZhang/PR-Centre-Releases/main/versions.yml"
-DOWNLOAD_DIR="$HOME/Downloads/prc-release"
-REQUESTED_PLATFORM="macos"
-REQUESTED_ARCHITECTURE="arm64"
-REQUESTED_FORMAT="dmg"
-mkdir -p "$DOWNLOAD_DIR"
-
-MANIFEST_FILE="$DOWNLOAD_DIR/versions.yml"
-curl -fsSL "$RELEASE_MANIFEST" -o "$MANIFEST_FILE"
-
-LATEST_TAG="$(ruby -ryaml -e 'puts YAML.safe_load_file(ARGV[0]).fetch("latest")' "$MANIFEST_FILE")"
-
-DOWNLOAD_URL="$(ruby -ryaml -e '
-data = YAML.safe_load_file(ARGV[0])
-latest = ARGV[1]
-platform = ARGV[2]
-architecture = ARGV[3]
-format = ARGV[4]
-release = data.fetch("releases").find { |item| item["tag"] == latest }
-asset = release.fetch("assets").find { |item| item["platform"] == platform && item["architecture"] == architecture && item["format"] == format }
-puts asset.fetch("downloadUrl")
-' "$MANIFEST_FILE" "$LATEST_TAG" "$REQUESTED_PLATFORM" "$REQUESTED_ARCHITECTURE" "$REQUESTED_FORMAT")"
-
-ASSET_NAME="$(basename "$DOWNLOAD_URL")"
-curl -L "$DOWNLOAD_URL" -o "$DOWNLOAD_DIR/$ASSET_NAME"
-
-EXPECTED_SHA256="$(ruby -ryaml -e '
-data = YAML.safe_load_file(ARGV[0])
-latest = ARGV[1]
-platform = ARGV[2]
-architecture = ARGV[3]
-format = ARGV[4]
-release = data.fetch("releases").find { |item| item["tag"] == latest }
-asset = release.fetch("assets").find { |item| item["platform"] == platform && item["architecture"] == architecture && item["format"] == format }
-puts asset.fetch("sha256")
-' "$MANIFEST_FILE" "$LATEST_TAG" "$REQUESTED_PLATFORM" "$REQUESTED_ARCHITECTURE" "$REQUESTED_FORMAT")"
-
-ACTUAL_SHA256="$(ruby -rdigest -e 'puts Digest::SHA256.file(ARGV[0]).hexdigest' "$DOWNLOAD_DIR/$ASSET_NAME")"
-test "$ACTUAL_SHA256" = "$EXPECTED_SHA256" || { echo "SHA256 verification failed"; exit 1; }
-
-open "$DOWNLOAD_DIR/$ASSET_NAME"
+REPO="https://github.com/SinuoZhang/PR-Centre-Releases"
+VERSION="$(curl -fsSL "https://raw.githubusercontent.com/SinuoZhang/PR-Centre-Releases/main/versions.yml" | ruby -ryaml -e 'puts YAML.safe_load(STDIN.read).fetch("latest")')"
+FILE="PR-Centre-${VERSION#v}-arm64-encrypted.dmg"
+curl -fL "$REPO/releases/download/$VERSION/$FILE" -o "$HOME/Downloads/$FILE"
+open "$HOME/Downloads/$FILE"
 ```
 
-If `wget` is preferred, replace the two `curl` download lines with:
+Optional checksum check:
 
 ```bash
-wget -O "$MANIFEST_FILE" "$RELEASE_MANIFEST"
-wget -O "$DOWNLOAD_DIR/$ASSET_NAME" "$DOWNLOAD_URL"
+shasum -a 256 "$HOME/Downloads/$FILE"
 ```
+
+Compare the result with the latest asset's `sha256` in [`versions.yml`](versions.yml). PR Centre's in-app updater performs this comparison automatically.
+
+If `wget` is preferred, replace the download line with `wget -O "$HOME/Downloads/$FILE" "$REPO/releases/download/$VERSION/$FILE"`.
 
 ### Linux
 
-Linux builds are not published yet. Future Linux assets will use the same `versions.yml` manifest and the same pattern. When a Linux build exists, use the same block above with Linux values, for example `REQUESTED_PLATFORM="linux"`, the matching architecture, and the published package format.
+Linux builds are not published yet. Future Linux releases will use the same latest-version pattern with the Linux asset name and package format listed in `versions.yml`.
 
 ## Installation Notes
 
