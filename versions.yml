@@ -8,6 +8,14 @@ releases:
     channel: stable
     publishedAt: "2026-08-20T10:31:59Z"
     releaseUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/tag/v0.2.1
+    releaseNotes: |-
+      - Added in-app Check for Updates for internal testing builds.
+      - Reads the public PR-Centre-Releases versions.yml manifest instead of GitHub HTML pages.
+      - Detects newer semantic versions and selects the macOS arm64 encrypted DMG asset.
+      - Downloads the DMG to the user's Downloads folder with progress feedback.
+      - Verifies the downloaded DMG with SHA-256 before offering Show in Finder or Open DMG.
+      - Keeps installation manual: users open the encrypted DMG and replace PR Centre.app themselves.
+      - Builds remain unsigned, not notarized, and password distribution remains outside PR Centre.
     assets:
       - name: PR-Centre-0.2.1-arm64-encrypted.dmg
         platform: macos
@@ -26,6 +34,11 @@ releases:
     channel: stable
     publishedAt: "2026-08-19T22:02:16Z"
     releaseUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/tag/v0.2.0
+    releaseNotes: |-
+      - Internal testing release for macOS Apple Silicon.
+      - Distributed as an AES-256 encrypted DMG with the password shared separately.
+      - Included citation/reference formatting improvements for PR Centre's literature workflow.
+      - Builds were unsigned and not notarized.
     assets:
       - name: PR-Centre-0.2.0-arm64-encrypted.dmg
         platform: macos
