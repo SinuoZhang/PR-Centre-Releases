@@ -25,8 +25,8 @@ releases:
         encryption: AES-256
         signed: false
         notarized: false
-        sizeBytes: 197888000
-        sha256: 478c0b35fcc44099b348970eaa86dffafa7c7b0f5f8473bb2c6703f0d7b79eb6
+        sizeBytes: 197878784
+        sha256: a46e2e054aabcee13604bda58469a6a4d69ca7d0246fed9ee81730a985d0030f
         downloadUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/download/v0.2.1/PR-Centre-0.2.1-arm64-encrypted.dmg
   - version: "0.2.0"
     tag: v0.2.0
