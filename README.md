@@ -43,6 +43,7 @@ Official builds are available from [GitHub Releases](../../releases). Version an
 
 | Version | Platform | Architecture | Asset | Status |
 | --- | --- | --- | --- | --- |
+| `0.2.2` | macOS | `arm64` | [encrypted DMG](../../releases/tag/v0.2.2) | internal testing |
 | `0.2.1` | macOS | `arm64` | [encrypted DMG](../../releases/tag/v0.2.1) | internal testing |
 
 The current release is provided for macOS on Apple Silicon (`arm64`) as an AES-256 encrypted DMG. The password is distributed separately to invited testers.

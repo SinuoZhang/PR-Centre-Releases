@@ -1,7 +1,37 @@
 schema: pr-centre.release-index
 schemaVersion: 1
-latest: v0.2.1
+latest: v0.2.2
 releases:
+  - version: "0.2.2"
+    tag: v0.2.2
+    name: PR Centre v0.2.2
+    channel: stable
+    publishedAt: "2026-08-21T12:55:51Z"
+    releaseUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/tag/v0.2.2
+    releaseNotes: |-
+      - Adds live LaTeX math projection and source editing in Notes and ReaderDoc rich text while preserving raw source persistence.
+      - Adds custom citation style creation, editing, duplication, renaming, deletion, and app-level storage.
+      - Keeps Library and Project Resources search input casing and spacing visible while normalized matching remains tolerant.
+      - Updates Library row mutations incrementally for created, updated, and deleted entries without full table reloads.
+      - Adds controlled active-row highlighting for Library and Project Resources context menus without Tabulator persistent selection.
+      - Moves Library entry deletion into the Library context menu and moves owned resource files and folders to system Trash.
+      - Persists shared UI preferences and Reader page-view defaults in app-level metadata.
+      - Adds editable-field copy and paste context menus.
+      - Keeps installation manual: users open the encrypted DMG and replace PR Centre.app themselves.
+      - Builds remain Developer ID unsigned, not notarized, and password distribution remains outside PR Centre.
+    assets:
+      - name: PR-Centre-0.2.2-arm64-encrypted.dmg
+        platform: macos
+        architecture: arm64
+        format: dmg
+        encrypted: true
+        encryption: AES-256
+        adHocSigned: true
+        signed: false
+        notarized: false
+        sizeBytes: 196808192
+        sha256: bf8ed17198bcab22a4e6725d518d136b360d890c075ac33423f734db529e6f57
+        downloadUrl: https://github.com/SinuoZhang/PR-Centre-Releases/releases/download/v0.2.2/PR-Centre-0.2.2-arm64-encrypted.dmg
   - version: "0.2.1"
     tag: v0.2.1
     name: PR Centre v0.2.1
